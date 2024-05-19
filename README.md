@@ -4,7 +4,7 @@
 - Indexing is provide hint to access data in our database
 - It 's like a table of content in a book that provide way to find the page faster
 
-# Attribute of index
+## Attribute of index
 - Access Types: This refers to the type of access such as value-based search, range access, etc.
 - Access Time: It refers to the time needed to find a particular data element or set of elements.
 - Insertion Time: It refers to the time taken to find the appropriate space and insert new data.
@@ -12,8 +12,8 @@
 - Space Overhead: It refers to the additional space required by the index.
 
 
-In general, there are two types of file organization mechanisms:
-#### Sequential file organization
+## In general, there are two types of file organization mechanisms:
+### Sequential file organization
 - the indices are based on a sorted ordering of the values.
 - Might store the data in a dense or sparse format.
 Dense index:
@@ -51,4 +51,33 @@ Sparse index:
         - Efficient Search: Each level of the index narrows down the search space, leading to faster query performance.
         - Scalability: Multilevel indexing scales well with very large datasets because it organizes the index entries in a hierarchical manner.
 
+Index types:
+- Unique Index: Ensures that the indexed columns do not contain duplicate values.
+- Non-Unique Index: Allows duplicate values in the indexed columns.
+- Composite Index: An index that is created on multiple columns.
+- Clustered Index: Determines the physical order of data in a table. When a table has a clustered index, the rows are stored on disk in the order of the index key.
+- Non-Clustered Index: A non-clustered index, on the other hand, does not alter the physical order of the rows in the table. Instead, it creates a separate structure within the table that contains a sorted list of key values and pointers to the corresponding rows.
+- Bitmap Index: A bitmap index is a special type of index that stores the values of the indexed columns as bitmaps. Each bit in the bitmap represents a distinct value in the column, and the bit is set to 1 if the value is present in the row and 0 if it is not.
+
+Advance index types:
+- Function-Based Index: A function-based index is an index that is created based on the result of a function or expression applied to one or more columns in the table.
+- Spatial Index: A spatial index is an index that is created on spatial data types, such as points, lines, or polygons. It is used to optimize queries that involve spatial operations, such as finding points within a certain distance of a given location.
+- Full-Text Index: A full-text index is an index that is created on one or more columns that contain text data. It is used to optimize queries that involve full-text search operations, such as searching for specific words or phrases in a large body of text.
+- Partial Index: A partial index is an index that is created on a subset of rows in a table that meet a specific condition. It is used to optimize queries that involve only a subset of the data in the table.
+- Covering Index: A covering index is an index that includes all the columns required to satisfy a query, so the query can be resolved by looking only at the index without accessing the table data.
+- Filtered Index: A filtered index is an index that is created on a subset of rows in a table that meet a specific condition. It is used to optimize queries that involve only a subset of the data in the table.
+- Index-Organized Table: An index-organized table is a type of table that stores data in an index structure, rather than in a separate data structure. The index-organized table is organized based on the primary key, and the data rows are stored in the leaf nodes of the index.
+- Reverse Key Index: A reverse key index is an index that is created by reversing the bytes of the indexed columns before storing them in the index. It is used to reduce index block contention and improve performance in high-concurrency environments.
+- Descending Index: A descending index is an index that is created in descending order on the indexed columns. It is used to optimize queries that require sorting the results in descending order.
+- Invisible Index: An invisible index is an index that is not visible to the optimizer when generating query plans. It is used to test the impact of dropping an index without actually dropping it.
+- Global Index: A global index is an index that is created on a partitioned table, and it spans all partitions of the table. It is used to optimize queries that involve the entire table.
+- Local Index: A local index is an index that is created on a partitioned table, and it is specific to a single partition of the table. It is used to optimize queries that involve only a subset of the data in the table.
+- Partitioned Index: A partitioned index is an index that is created on a partitioned table, and it is partitioned in the same way as the table. It is used to optimize queries that involve only a subset of the data in the table.
+
 ## Features of Indexing
+When building indexing, be consider on:
+- The cardinality
+- Selectivity
+- Uniqueness of the indexing columns can be taken into account
+
+When non-contiguous data blocks are stored in an index, it can result in index fragmentation, which makes the index less effective. Regular index maintenance, such as defragmentation and reorganization, can decrease fragmentation.
